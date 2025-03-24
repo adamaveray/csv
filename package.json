@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "bun --bun x prettier --write **/*.{php,md,json}",
+    "lint": "bun --bun x prettier --check **/*.{php,md,json}",
+    "prepare": "husky",
+    "test": "php ./vendor/bin/phpunit"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.4",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3"
+  }
+}

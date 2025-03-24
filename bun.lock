@@ -1,0 +1,23 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "devDependencies": {
+        "@prettier/plugin-php": "^0.22.4",
+        "husky": "^9.1.7",
+        "prettier": "^3.5.3",
+      },
+    },
+  },
+  "packages": {
+    "@prettier/plugin-php": ["@prettier/plugin-php@0.22.4", "", { "dependencies": { "linguist-languages": "^7.27.0", "php-parser": "^3.1.5" }, "peerDependencies": { "prettier": "^3.0.0" } }, "sha512-uZWqfyrwsxScIYkmVcfnoQGFmKVMXTHD5pqYT4l8fxzm5P3XY94hTPbf8X6TFCi2QTZBIot7GS8lfIjQjldc2g=="],
+
+    "husky": ["husky@9.1.7", "", { "bin": { "husky": "bin.js" } }, "sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA=="],
+
+    "linguist-languages": ["linguist-languages@7.29.0", "", {}, "sha512-KTh6ltVzr3ycnqxWw7zlzy8CqTSrpdymUzGl0EgYxK7cHoRgsX3VrZw4ExCWGCPX3uxxa7kgZwir4zeQkqjdZw=="],
+
+    "php-parser": ["php-parser@3.2.2", "", {}, "sha512-voj3rzCJmEbwHwH3QteON28wA6K+JbcaJEofyUZkUXmcViiXofjbSbcE5PtqtjX6nstnnAEYCFoRq0mkjP5/cg=="],
+
+    "prettier": ["prettier@3.5.3", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw=="],
+  }
+}
