@@ -2,8 +2,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format": "bun --bun x prettier --write **/*.{php,md,json}",
-    "lint": "bun --bun x prettier --check **/*.{php,md,json}",
+    "format": "bun --bun x prettier --write '**/*.{php,md,json}'",
+    "lint": "bun --bun x prettier --check '**/*.{php,md,json}'",
     "prepare": "husky",
     "test": "php ./vendor/bin/phpunit"
   },
