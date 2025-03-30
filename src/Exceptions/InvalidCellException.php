@@ -11,8 +11,7 @@ final class InvalidCellException extends SchemaException
     ?int $row,
     int $code = 0,
     ?\Throwable $previous = null,
-  )
-  {
+  ) {
     $message .= ' (in column "' . $column . '"';
     if ($row !== null) {
       $message .= ' on row ' . $row;

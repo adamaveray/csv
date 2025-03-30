@@ -16,8 +16,7 @@ abstract class AbstractDateTimeType extends AbstractType
     public readonly \DateTimeZone $timezone = new \DateTimeZone('UTC'),
     private readonly string $datePrefix = '',
     private readonly string $dateSuffix = '',
-  )
-  {
+  ) {
     parent::__construct($nullable, $default);
   }
 

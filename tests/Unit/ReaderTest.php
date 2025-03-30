@@ -17,18 +17,19 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Reader::class)]
 #[CoversTrait(HeaderFormattingTrait::class)]
 #[CoversTrait(SchemaTrait::class)]
-final class ReaderTest extends TestCase {
-  private const string TEST_CSV_STRING = <<<'CSV'
-Column One,Column Two
-one,two
-CSV;
-  private const array TEST_CSV_HEADERS_SLUGGED = ['column-one', 'column-two'];
+final class ReaderTest extends TestCase
+{
+  private const TEST_CSV_STRING = <<<'CSV'
+  Column One,Column Two
+  one,two
+  CSV;
+  private const TEST_CSV_HEADERS_SLUGGED = ['column-one', 'column-two'];
 
   public function testHeaderFormatter(): void
   {
     $reader = Reader::createFromString(self::TEST_CSV_STRING);
 
-    $reader->setHeaderFormatter(static fn (string $header): string => '[[' . $header . ']]');
+    $reader->setHeaderFormatter(static fn(string $header): string => '[[' . $header . ']]');
     self::assertEquals(
       ['[[Column One]]', '[[Column Two]]'],
       $reader->getHeader(),
@@ -42,11 +43,7 @@ CSV;
     $reader = Reader::createFromString(self::TEST_CSV_STRING);
     $reader->slugHeaders();
 
-    self::assertEquals(
-      self::TEST_CSV_HEADERS_SLUGGED,
-      $reader->getHeader(),
-      'The headers should be slugged.',
-    );
+    self::assertEquals(self::TEST_CSV_HEADERS_SLUGGED, $reader->getHeader(), 'The headers should be slugged.');
     self::assertEquals(
       self::TEST_CSV_HEADERS_SLUGGED,
       \array_keys($reader->toArray()[0]),
@@ -95,8 +92,9 @@ CSV;
         <<<'CSV'
         string,int,float,bool,datetime,date,time,list,json,serialized
         Hello World,123,123.45,1,2025-01-01T01:23:45Z,2025-01-01,01:23:45,"one,two,three",{"one":"two"},"%s"
-        CSV,
-       str_replace('"', '""', (\serialize(['hello' => 'world']))),
+        CSV
+        ,
+        str_replace('"', '""', \serialize(['hello' => 'world'])),
       ),
       new Schema([
         'string' => new Types\StringType(),

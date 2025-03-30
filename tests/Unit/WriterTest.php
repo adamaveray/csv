@@ -68,8 +68,9 @@ final class WriterTest extends TestCase
         <<<'CSV'
         string,int,float,bool,datetime,date,time,list,json,serialized
         "Hello World",123,123.45,true,2025-01-01T01:23:45Z,2025-01-01,01:23:45,"one,two,three","{""one"":""two""}","%s"
-        CSV,
-        str_replace('"', '""', (\serialize(['hello' => 'world']))),
+        CSV
+        ,
+        str_replace('"', '""', \serialize(['hello' => 'world'])),
       ),
       [
         [

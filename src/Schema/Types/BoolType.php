@@ -13,8 +13,7 @@ final class BoolType extends AbstractType
     ?bool $default = null,
     public readonly string $valueTrue = 'true',
     public readonly string $valueFalse = 'false',
-  )
-  {
+  ) {
     parent::__construct($nullable, $default);
   }
 

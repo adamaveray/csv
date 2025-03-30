@@ -30,7 +30,7 @@ class Reader extends \League\Csv\Reader
   {
     return $this->setHeaderFormatter(
       static fn(string $header): string => static::slug($header, $slugger),
-      $headerOffset
+      $headerOffset,
     );
   }
 
@@ -105,8 +105,8 @@ class Reader extends \League\Csv\Reader
         fn(array $record): array => array_reduce(
           $this->formatters,
           static fn(array $record, \Closure $formatter): array => $formatter($record),
-          $record
-        )
+          $record,
+        ),
       );
     }
 

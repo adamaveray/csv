@@ -17,8 +17,7 @@ final class CustomType extends AbstractType
     private readonly ValueSerializerInterface $transformer,
     bool $nullable = false,
     mixed $default = null,
-  )
-  {
+  ) {
     parent::__construct($nullable, $default);
   }
 

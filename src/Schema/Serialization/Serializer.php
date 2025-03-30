@@ -9,9 +9,7 @@ use Averay\Csv\Schema\Schema;
 
 final readonly class Serializer implements DeserializerInterface, SerializerInterface
 {
-  public function __construct(private Schema $schema)
-  {
-  }
+  public function __construct(private Schema $schema) {}
 
   public function deserializeRecord(array $record, ?int $row = null): array
   {
@@ -35,9 +33,9 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
     foreach ($this->schema->columns as $columnName => $columnType) {
       if (\array_key_exists($columnName, $record)) {
         $value = $record[$columnName];
-      } else if ($columnType->default !== null) {
+      } elseif ($columnType->default !== null) {
         $value = $columnType->default;
-      } else if ($columnType->nullable) {
+      } elseif ($columnType->nullable) {
         $value = null;
       } else {
         throw new \OutOfBoundsException(\sprintf('Column "%s" is required.', $columnName));

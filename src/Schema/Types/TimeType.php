@@ -5,11 +5,7 @@ namespace Averay\Csv\Schema\Types;
 
 final class TimeType extends AbstractDateTimeType
 {
-  public function __construct(
-    bool $nullable = false,
-    ?\DateTimeInterface $default = null,
-    string $format = 'H:i:s',
-  )
+  public function __construct(bool $nullable = false, ?\DateTimeInterface $default = null, string $format = 'H:i:s')
   {
     parent::__construct(
       $format,

@@ -17,8 +17,7 @@ final class SerializedType extends AbstractType
     bool $nullable = false,
     mixed $default = null,
     private readonly bool|array $allowedClasses = false,
-  )
-  {
+  ) {
     parent::__construct($nullable, $default);
   }
 

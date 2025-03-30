@@ -17,8 +17,7 @@ final class JsonType extends AbstractType
     mixed $default = null,
     private readonly bool $associative = true,
     private readonly int $flags = \JSON_INVALID_UTF8_SUBSTITUTE,
-  )
-  {
+  ) {
     parent::__construct($nullable, $default);
   }
 
