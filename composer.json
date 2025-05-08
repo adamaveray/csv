@@ -22,12 +22,12 @@
   },
   "require": {
     "php": ">=8.4",
-    "league/csv": "^9.22",
+    "league/csv": "^9.23",
     "symfony/string": "^7.2",
     "symfony/translation-contracts": "^3.5"
   },
   "require-dev": {
-    "phpunit/phpunit": "^12.0",
+    "phpunit/phpunit": "^12.1",
     "roave/security-advisories": "dev-latest"
   }
 }
