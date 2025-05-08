@@ -10,15 +10,15 @@ namespace Averay\Csv\Schema\Types;
 final class JsonType extends AbstractType
 {
   /**
-   * @param TData|null $default
+   * @param TData|null $defaultValue
    */
   public function __construct(
     bool $nullable = false,
-    mixed $default = null,
+    mixed $defaultValue = null,
     private readonly bool $associative = true,
     private readonly int $flags = \JSON_INVALID_UTF8_SUBSTITUTE,
   ) {
-    parent::__construct($nullable, $default);
+    parent::__construct($nullable, $defaultValue);
   }
 
   /**

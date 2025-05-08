@@ -10,15 +10,15 @@ namespace Averay\Csv\Schema\Types;
 final class SerializedType extends AbstractType
 {
   /**
-   * @param TData|null $default
+   * @param TData|null $defaultValue
    * @param bool|list<class-string> $allowedClasses
    */
   public function __construct(
     bool $nullable = false,
-    mixed $default = null,
+    mixed $defaultValue = null,
     private readonly bool|array $allowedClasses = false,
   ) {
-    parent::__construct($nullable, $default);
+    parent::__construct($nullable, $defaultValue);
   }
 
   public function deserialize(string $value): mixed

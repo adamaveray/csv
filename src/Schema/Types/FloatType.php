@@ -8,9 +8,9 @@ namespace Averay\Csv\Schema\Types;
  */
 final class FloatType extends AbstractType
 {
-  public function __construct(bool $nullable = false, ?float $default = null)
+  public function __construct(bool $nullable = false, ?float $defaultValue = null)
   {
-    parent::__construct($nullable, $default);
+    parent::__construct($nullable, $defaultValue);
   }
 
   public function deserialize(string $value): float
