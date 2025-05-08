@@ -10,11 +10,11 @@ final class BoolType extends AbstractType
 {
   public function __construct(
     bool $nullable = false,
-    ?bool $defaultValue = null,
+    ?bool $default = null,
     public readonly string $valueTrue = 'true',
     public readonly string $valueFalse = 'false',
   ) {
-    parent::__construct($nullable, $defaultValue);
+    parent::__construct($nullable, $default);
   }
 
   public function deserialize(string $value): bool

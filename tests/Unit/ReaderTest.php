@@ -169,26 +169,20 @@ final class ReaderTest extends TestCase
       CSV
       ,
       new Schema([
-        'string' => new Types\StringType(nullable: true, defaultValue: 'Hello World'),
-        'int' => new Types\IntType(nullable: true, defaultValue: 123),
-        'float' => new Types\FloatType(nullable: true, defaultValue: 123.45),
-        'bool' => new Types\BoolType(nullable: true, defaultValue: true),
+        'string' => new Types\StringType(nullable: true, default: 'Hello World'),
+        'int' => new Types\IntType(nullable: true, default: 123),
+        'float' => new Types\FloatType(nullable: true, default: 123.45),
+        'bool' => new Types\BoolType(nullable: true, default: true),
         'datetime' => new Types\DateTimeType(
           nullable: true,
-          defaultValue: new \DateTimeImmutable('2025-01-01T01:23:45Z', $tz),
+          default: new \DateTimeImmutable('2025-01-01T01:23:45Z', $tz),
           timezone: $tz,
         ),
-        'date' => new Types\DateType(
-          nullable: true,
-          defaultValue: new \DateTimeImmutable('2025-01-01T00:00:00Z', $utc),
-        ),
-        'time' => new Types\TimeType(
-          nullable: true,
-          defaultValue: new \DateTimeImmutable('1970-01-01T01:23:45Z', $utc),
-        ),
-        'list' => new Types\ListType(nullable: true, defaultValue: ['one', 'two', 'three']),
-        'json' => new Types\JsonType(nullable: true, defaultValue: ['one' => 'two']),
-        'serialized' => new Types\SerializedType(nullable: true, defaultValue: ['hello' => 'world']),
+        'date' => new Types\DateType(nullable: true, default: new \DateTimeImmutable('2025-01-01T00:00:00Z', $utc)),
+        'time' => new Types\TimeType(nullable: true, default: new \DateTimeImmutable('1970-01-01T01:23:45Z', $utc)),
+        'list' => new Types\ListType(nullable: true, default: ['one', 'two', 'three']),
+        'json' => new Types\JsonType(nullable: true, default: ['one' => 'two']),
+        'serialized' => new Types\SerializedType(nullable: true, default: ['hello' => 'world']),
       ]),
     ];
   }

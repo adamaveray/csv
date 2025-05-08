@@ -8,9 +8,9 @@ namespace Averay\Csv\Schema\Types;
  */
 final class StringType extends AbstractType
 {
-  public function __construct(bool $nullable = false, ?string $defaultValue = null)
+  public function __construct(bool $nullable = false, ?string $default = null)
   {
-    parent::__construct($nullable, $defaultValue);
+    parent::__construct($nullable, $default);
   }
 
   public function deserialize(string $value): string

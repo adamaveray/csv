@@ -8,9 +8,9 @@ namespace Averay\Csv\Schema\Types;
  */
 final class IntType extends AbstractType
 {
-  public function __construct(bool $nullable = false, ?int $defaultValue = null)
+  public function __construct(bool $nullable = false, ?int $default = null)
   {
-    parent::__construct($nullable, $defaultValue);
+    parent::__construct($nullable, $default);
   }
 
   public function deserialize(string $value): int

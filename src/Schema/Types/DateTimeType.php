@@ -7,10 +7,10 @@ final class DateTimeType extends AbstractDateTimeType
 {
   public function __construct(
     bool $nullable = false,
-    ?\DateTimeInterface $defaultValue = null,
+    ?\DateTimeInterface $default = null,
     \DateTimeZone $timezone = new \DateTimeZone('UTC'),
     string $format = \DateTimeInterface::ATOM,
   ) {
-    parent::__construct($format, $format, $nullable, $defaultValue, $timezone);
+    parent::__construct($format, $format, $nullable, $default, $timezone);
   }
 }

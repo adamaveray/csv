@@ -13,14 +13,11 @@ use Averay\Csv\Writer;
 final class ListType extends AbstractType
 {
   /**
-   * @param list<TItem>|null $defaultValue
+   * @param list<TItem>|null $default
    */
-  public function __construct(
-    bool $nullable = false,
-    ?array $defaultValue = null,
-    public readonly string $separator = ',',
-  ) {
-    parent::__construct($nullable, $defaultValue);
+  public function __construct(bool $nullable = false, ?array $default = null, public readonly string $separator = ',')
+  {
+    parent::__construct($nullable, $default);
   }
 
   public function deserialize(string $value): array
