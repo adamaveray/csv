@@ -38,7 +38,7 @@ class Writer extends \League\Csv\Writer
       $serializer = new Serializer($this->schema);
       try {
         $record = $serializer->serializeRecord($record);
-      } catch (\Throwable $exception) {
+      } catch (\Throwable) {
         throw CannotInsertRecord::triggerOnInsertion($record);
       }
     }
