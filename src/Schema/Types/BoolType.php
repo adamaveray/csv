@@ -30,6 +30,7 @@ final class BoolType extends AbstractType
   #[\Override]
   public function serialize(mixed $value): string
   {
+    /** @psalm-suppress RedundantConditionGivenDocblockType Additional validation for non-Psalm-using consumers. */
     \assert(\is_bool($value));
     return $value ? $this->valueTrue : $this->valueFalse;
   }

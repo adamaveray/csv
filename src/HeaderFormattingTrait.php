@@ -10,6 +10,7 @@ trait HeaderFormattingTrait
 
   /**
    * @param (callable(string):string)|null $headerFormatter
+   * @return $this
    */
   public function setHeaderFormatter(?callable $headerFormatter): static
   {

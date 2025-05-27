@@ -24,11 +24,19 @@ final class SerializedType extends AbstractType
   #[\Override]
   public function deserialize(string $value): mixed
   {
-    $result = \unserialize($value, ['allowed_classes' => $this->allowedClasses]);
-    if ($result === false) {
-      throw new \UnexpectedValueException('Invalid serialized value.');
+    // Ensure error thrown on unserialization failure
+    \set_error_handler(
+      static fn(int $severity, string $message): never => throw new \ErrorException($message, 0, $severity),
+    );
+
+    try {
+      /** @var TData */
+      return \unserialize($value, ['allowed_classes' => $this->allowedClasses]);
+    } catch (\Throwable $exception) {
+      throw new \UnexpectedValueException('Invalid serialized value.', previous: $exception);
+    } finally {
+      \restore_error_handler();
     }
-    return $result;
   }
 
   #[\Override]

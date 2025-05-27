@@ -9,6 +9,7 @@ use League\Csv\Exception;
 
 /**
  * @api
+ * @psalm-suppress DeprecatedInterface Parent class implements internally-deprecated interface ByteSequence.
  */
 class Writer extends \League\Csv\Writer
 {

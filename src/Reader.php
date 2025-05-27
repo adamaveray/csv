@@ -13,10 +13,10 @@ use Symfony\Component\String\Slugger;
 /**
  * @template TRow of array
  *
- * @method \Iterator<array-key, TRow> getRecords(array<string> $header = [])
- * @method array<array-key, TRow> getRecords(array<string> $header = [])
+ * @extends \League\Csv\Reader<TRow>
  *
  * @api
+ * @psalm-suppress DeprecatedInterface Parent class implements internally-deprecated interface ByteSequence.
  */
 class Reader extends \League\Csv\Reader
 {
@@ -37,6 +37,7 @@ class Reader extends \League\Csv\Reader
 
   /**
    * @param (callable(string):string)|null $headerFormatter
+   * @return $this
    */
   public function setHeaderFormatter(?callable $headerFormatter, ?int $headerOffset = 0): static
   {
@@ -48,6 +49,7 @@ class Reader extends \League\Csv\Reader
 
   /**
    * @param Schema|array<string, TypeInterface> $schema
+   * @return $this
    */
   public function setSchema(Schema|array $schema, ?int $headerOffset = 0): static
   {
@@ -58,13 +60,14 @@ class Reader extends \League\Csv\Reader
   }
 
   /**
-   * @return array<string>
+   * @return list<string>
    * @throws SyntaxError
    */
   #[\Override]
   protected function setHeader(int $offset): array
   {
     $header = parent::setHeader($offset);
+    \assert(\array_is_list($header));
     if ($this->headerFormatter !== null) {
       $header = \array_map($this->headerFormatter, $header);
     }
@@ -88,7 +91,9 @@ class Reader extends \League\Csv\Reader
     if (!empty($header)) {
       $iterator = new MapIterator($iterator, static function (array $record) use ($header): array {
         $assocRecord = [];
+        /** @var array-key $headerName */
         foreach ($header as $offset => $headerName) {
+          /** @psalm-suppress MixedAssignment */
           $assocRecord[$headerName] = $record[$offset] ?? null;
         }
         return $assocRecord;
@@ -107,12 +112,14 @@ class Reader extends \League\Csv\Reader
         $iterator,
         fn(array $record): array => \array_reduce(
           $this->formatters,
+          /** @psalm-suppress MixedReturnStatement Psalm does not support generics on closures. */
           static fn(array $record, \Closure $formatter): array => $formatter($record),
           $record,
         ),
       );
     }
 
+    /** @var \Iterator<array-key, TRow> */
     return $iterator;
   }
 
@@ -123,6 +130,7 @@ class Reader extends \League\Csv\Reader
   {
     $rows = [];
     foreach ($this->getIterator() as $row) {
+      /** @var TRow */
       $rows[] = $row;
     }
     return $rows;

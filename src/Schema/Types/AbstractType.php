@@ -6,6 +6,7 @@ namespace Averay\Csv\Schema\Types;
 /**
  * @template TType
  * @implements TypeInterface<TType>
+ * @psalm-suppress PossiblyUnusedProperty Properties are declared by interface.
  */
 abstract class AbstractType implements TypeInterface
 {

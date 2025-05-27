@@ -17,8 +17,10 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
   {
     $deserializedRecord = [];
     foreach ($this->schema->columns as $columnName => $columnType) {
+      /** @psalm-suppress MixedAssignment */
       $value =
         $record[$columnName] ?? throw new InvalidRowException(\sprintf('Missing column "%s".', $columnName), $row);
+      /** @psalm-suppress MixedArgument,MixedAssignment */
       $deserializedRecord[$columnName] = $this->deserializeCell($value, $columnName, $columnType, $row);
     }
     return $deserializedRecord;
@@ -28,6 +30,7 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
   {
     if ($value === '') {
       // Empty cell
+      /** @psalm-suppress MixedAssignment */
       $defaultValue = $columnType->default;
       if ($defaultValue === null && !$columnType->nullable) {
         throw new InvalidCellException(
@@ -46,14 +49,22 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
     }
   }
 
+  /**
+   * @template TKey of array-key
+   * @param array<TKey, mixed> $record
+   * @return array<TKey, string>
+   */
   #[\Override]
   public function serializeRecord(array $record): array
   {
+    /** @var array<TKey, string> $serializedRecord */
     $serializedRecord = [];
     foreach ($this->schema->columns as $columnName => $columnType) {
       if (\array_key_exists($columnName, $record)) {
+        /** @psalm-suppress MixedAssignment */
         $value = $record[$columnName];
       } elseif ($columnType->default !== null) {
+        /** @psalm-suppress MixedAssignment */
         $value = $columnType->default;
       } elseif ($columnType->nullable) {
         $value = null;
@@ -62,6 +73,7 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
       }
       $serializedRecord[$columnName] = $columnType->serialize($value);
     }
+    /** @var array<TKey, string> */
     return $serializedRecord;
   }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Averay\Csv\Schema\Types;
 
 /**
- * @psalm-type TValue
+ * @template TValue
  */
 interface ValueSerializerInterface
 {

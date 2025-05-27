@@ -22,6 +22,6 @@ final class StringType extends AbstractType
   #[\Override]
   public function serialize(mixed $value): string
   {
-    return (string) $value;
+    return $value;
   }
 }

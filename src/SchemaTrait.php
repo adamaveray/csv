@@ -12,6 +12,7 @@ trait SchemaTrait
 
   /**
    * @param Schema|array<string, TypeInterface> $schema
+   * @return $this
    */
   public function setSchema(Schema|array $schema): static
   {

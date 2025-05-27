@@ -12,6 +12,7 @@ readonly class Schema
 {
   /**
    * @param array<string, TypeInterface> $columns
+   * @psalm-suppress RedundantConditionGivenDocblockType Additional validation for non-Psalm-using consumers.
    */
   public function __construct(public array $columns)
   {
