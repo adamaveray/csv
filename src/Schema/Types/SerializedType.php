@@ -26,7 +26,6 @@ final class SerializedType extends AbstractType
   {
     $result = \unserialize($value, ['allowed_classes' => $this->allowedClasses]);
     if ($result === false) {
-      var_dump($value, $this);
       throw new \UnexpectedValueException('Invalid serialized value.');
     }
     return $result;
