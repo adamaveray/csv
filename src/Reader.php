@@ -105,7 +105,7 @@ class Reader extends \League\Csv\Reader
     if (!empty($this->formatters)) {
       $iterator = new MapIterator(
         $iterator,
-        fn(array $record): array => array_reduce(
+        fn(array $record): array => \array_reduce(
           $this->formatters,
           static fn(array $record, \Closure $formatter): array => $formatter($record),
           $record,
