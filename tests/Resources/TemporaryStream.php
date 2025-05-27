@@ -12,7 +12,11 @@ final readonly class TemporaryStream
 
   public function __construct()
   {
-    $this->stream = \fopen('php://memory', 'wb+');
+    $stream = \fopen('php://memory', 'wb+');
+    if ($stream === false) {
+      throw new \UnexpectedValueException('Failed creating temporary stream.');
+    }
+    $this->stream = $stream;
   }
 
   public function toString(): string
