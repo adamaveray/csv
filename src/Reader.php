@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Averay\Csv;
 
-use Averay\Csv\Schema\Schema;
+use Averay\Csv\Schema\SchemaInterface;
 use Averay\Csv\Schema\Serialization\Serializer;
 use Averay\Csv\Schema\Types\TypeInterface;
 use League\Csv\MapIterator;
@@ -48,10 +48,10 @@ class Reader extends \League\Csv\Reader
   }
 
   /**
-   * @param Schema|array<string, TypeInterface> $schema
+   * @param SchemaInterface|array<string, TypeInterface> $schema
    * @return $this
    */
-  public function setSchema(Schema|array $schema, ?int $headerOffset = 0): static
+  public function setSchema(SchemaInterface|array $schema, ?int $headerOffset = 0): static
   {
     if ($headerOffset !== null) {
       $this->setHeaderOffset($headerOffset);
@@ -73,7 +73,7 @@ class Reader extends \League\Csv\Reader
     }
     if ($this->schema !== null) {
       // Validate header
-      $schemaHeader = \array_keys($this->schema->columns);
+      $schemaHeader = \array_keys($this->schema->getColumns());
       if ($header !== $schemaHeader) {
         throw new Exceptions\InvalidHeaderException($header, expected: $schemaHeader);
       }

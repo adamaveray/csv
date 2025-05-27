@@ -9,6 +9,7 @@ use Averay\Csv\Exceptions\InvalidRowException;
 use Averay\Csv\HeaderFormattingTrait;
 use Averay\Csv\Reader;
 use Averay\Csv\Schema\Schema;
+use Averay\Csv\Schema\SchemaInterface;
 use Averay\Csv\Schema\Types;
 use Averay\Csv\SchemaTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -66,7 +67,7 @@ final class ReaderTest extends TestCase
 
   #[Depends('testSchemaStorage')]
   #[DataProvider('schemaUsageDataProvider')]
-  public function testSchemaUsage(array $expected, string $csv, Schema $schema): void
+  public function testSchemaUsage(array $expected, string $csv, SchemaInterface $schema): void
   {
     $reader = Reader::createFromString($csv)->setSchema($schema);
     self::assertEquals($expected, $reader->toArray(), 'The CSV should be processed according to the schema.');

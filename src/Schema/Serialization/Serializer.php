@@ -5,18 +5,18 @@ namespace Averay\Csv\Schema\Serialization;
 
 use Averay\Csv\Exceptions\InvalidCellException;
 use Averay\Csv\Exceptions\InvalidRowException;
-use Averay\Csv\Schema\Schema;
+use Averay\Csv\Schema\SchemaInterface;
 use Averay\Csv\Schema\Types\TypeInterface;
 
 final readonly class Serializer implements DeserializerInterface, SerializerInterface
 {
-  public function __construct(private Schema $schema) {}
+  public function __construct(private SchemaInterface $schema) {}
 
   #[\Override]
   public function deserializeRecord(array $record, ?int $row = null): array
   {
     $deserializedRecord = [];
-    foreach ($this->schema->columns as $columnName => $columnType) {
+    foreach ($this->schema->getColumns() as $columnName => $columnType) {
       /** @psalm-suppress MixedAssignment */
       $value =
         $record[$columnName] ?? throw new InvalidRowException(\sprintf('Missing column "%s".', $columnName), $row);
@@ -59,7 +59,7 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
   {
     /** @var array<TKey, string> $serializedRecord */
     $serializedRecord = [];
-    foreach ($this->schema->columns as $columnName => $columnType) {
+    foreach ($this->schema->getColumns() as $columnName => $columnType) {
       if (\array_key_exists($columnName, $record)) {
         /** @psalm-suppress MixedAssignment */
         $value = $record[$columnName];

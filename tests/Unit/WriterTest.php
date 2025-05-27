@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Averay\Csv\Tests\Unit;
 
 use Averay\Csv\HeaderFormattingTrait;
+use Averay\Csv\Schema\SchemaInterface;
 use Averay\Csv\SchemaTrait;
 use Averay\Csv\Schema\Schema;
 use Averay\Csv\Schema\Types;
@@ -47,13 +48,13 @@ final class WriterTest extends TestCase
 
   #[Depends('testSchemaStorage')]
   #[DataProvider('schemaUsageDataProvider')]
-  public function testSchemaUsage(string $expected, array $records, Schema $schema): void
+  public function testSchemaUsage(string $expected, array $records, SchemaInterface $schema): void
   {
     $stream = new TemporaryStream();
 
     $writer = Writer::createFromStream($stream->stream)->setSchema($schema);
 
-    $writer->insertHeader(\array_keys($schema->columns));
+    $writer->insertHeader(\array_keys($schema->getColumns()));
     $writer->insertAll($records);
 
     self::assertEquals($expected, \rtrim($stream->toString()), 'The CSV should be processed according to the schema.');
