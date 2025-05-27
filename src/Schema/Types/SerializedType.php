@@ -21,6 +21,7 @@ final class SerializedType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): mixed
   {
     $result = \unserialize($value, ['allowed_classes' => $this->allowedClasses]);
@@ -31,6 +32,7 @@ final class SerializedType extends AbstractType
     return $result;
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     return \serialize($value);

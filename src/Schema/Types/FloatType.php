@@ -13,12 +13,14 @@ final class FloatType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): float
   {
     \assert(\is_numeric($value));
     return (float) $value;
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     return (string) $value;

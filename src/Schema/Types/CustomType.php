@@ -21,11 +21,13 @@ final class CustomType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): mixed
   {
     return $this->transformer->deserialize($value);
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     return $this->transformer->serialize($value);

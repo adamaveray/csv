@@ -60,6 +60,7 @@ class Reader extends \League\Csv\Reader
    * @return array<string>
    * @throws SyntaxError
    */
+  #[\Override]
   protected function setHeader(int $offset): array
   {
     $header = parent::setHeader($offset);
@@ -79,6 +80,7 @@ class Reader extends \League\Csv\Reader
   /**
    * @return \Iterator<array-key, TRow>
    */
+  #[\Override]
   protected function combineHeader(\Iterator $iterator, array $header): \Iterator
   {
     // Combine headers

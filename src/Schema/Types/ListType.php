@@ -20,6 +20,7 @@ final class ListType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): array
   {
     $csv = Reader::createFromString($value)->toArray();
@@ -29,6 +30,7 @@ final class ListType extends AbstractType
     return $csv[0];
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     $stream = \fopen('php://temp', 'wb+');

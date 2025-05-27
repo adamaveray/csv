@@ -12,6 +12,7 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
 {
   public function __construct(private Schema $schema) {}
 
+  #[\Override]
   public function deserializeRecord(array $record, ?int $row = null): array
   {
     $deserializedRecord = [];
@@ -45,6 +46,7 @@ final readonly class Serializer implements DeserializerInterface, SerializerInte
     }
   }
 
+  #[\Override]
   public function serializeRecord(array $record): array
   {
     $serializedRecord = [];

@@ -24,11 +24,13 @@ final class JsonType extends AbstractType
   /**
    * @return TData
    */
+  #[\Override]
   public function deserialize(string $value): mixed
   {
     return \json_decode($value, $this->associative, flags: \JSON_THROW_ON_ERROR | $this->flags);
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     return \json_encode($value, flags: \JSON_THROW_ON_ERROR | $this->flags);

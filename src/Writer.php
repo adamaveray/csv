@@ -28,6 +28,7 @@ class Writer extends \League\Csv\Writer
     return $this->insertOne($header, applySchema: false);
   }
 
+  #[\Override]
   public function insertOne(array $record, bool $applySchema = true): int
   {
     if ($applySchema && $this->schema !== null) {

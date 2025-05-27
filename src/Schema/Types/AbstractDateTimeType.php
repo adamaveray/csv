@@ -20,6 +20,7 @@ abstract class AbstractDateTimeType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): \DateTimeInterface
   {
     $fullValue = $this->datePrefix . $value . $this->dateSuffix;
@@ -30,6 +31,7 @@ abstract class AbstractDateTimeType extends AbstractType
     return $datetime;
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     \assert($value instanceof \DateTimeInterface);

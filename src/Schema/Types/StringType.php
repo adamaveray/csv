@@ -13,11 +13,13 @@ final class StringType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): string
   {
     return $value;
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     return (string) $value;

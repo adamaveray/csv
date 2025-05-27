@@ -17,6 +17,7 @@ final class BoolType extends AbstractType
     parent::__construct($nullable, $default);
   }
 
+  #[\Override]
   public function deserialize(string $value): bool
   {
     return match ($value) {
@@ -26,6 +27,7 @@ final class BoolType extends AbstractType
     };
   }
 
+  #[\Override]
   public function serialize(mixed $value): string
   {
     \assert(\is_bool($value));
