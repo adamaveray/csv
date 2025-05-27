@@ -25,7 +25,7 @@ class Writer extends \League\Csv\Writer
     if ($this->hasInserted) {
       throw new Exception('Headers cannot be inserted after records have been inserted.');
     }
-    if ($this->headerFormatter) {
+    if ($this->headerFormatter !== null) {
       $header = \array_map($this->headerFormatter, $header);
     }
     return $this->insertOne($header, applySchema: false);

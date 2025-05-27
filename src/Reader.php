@@ -65,7 +65,7 @@ class Reader extends \League\Csv\Reader
   protected function setHeader(int $offset): array
   {
     $header = parent::setHeader($offset);
-    if ($this->headerFormatter) {
+    if ($this->headerFormatter !== null) {
       $header = \array_map($this->headerFormatter, $header);
     }
     if ($this->schema !== null) {
