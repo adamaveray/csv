@@ -7,7 +7,6 @@ use Averay\Csv\Schema\Schema;
 use Averay\Csv\Schema\Serialization\Serializer;
 use Averay\Csv\Schema\Types\TypeInterface;
 use League\Csv\MapIterator;
-use League\Csv\Serializer\Type;
 use League\Csv\SyntaxError;
 use Symfony\Component\String\Slugger;
 
@@ -46,7 +45,7 @@ class Reader extends \League\Csv\Reader
   }
 
   /**
-   * @param Schema|array<string, TypeInterface|Type> $schema
+   * @param Schema|array<string, TypeInterface> $schema
    */
   public function setSchema(Schema|array $schema, ?int $headerOffset = 0): static
   {
