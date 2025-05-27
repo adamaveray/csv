@@ -15,6 +15,8 @@ use Symfony\Component\String\Slugger;
  *
  * @method \Iterator<array-key, TRow> getRecords(array<string> $header = [])
  * @method array<array-key, TRow> getRecords(array<string> $header = [])
+ *
+ * @api
  */
 class Reader extends \League\Csv\Reader
 {

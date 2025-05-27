@@ -7,6 +7,9 @@ use Averay\Csv\Schema\Serialization\Serializer;
 use League\Csv\CannotInsertRecord;
 use League\Csv\Exception;
 
+/**
+ * @api
+ */
 class Writer extends \League\Csv\Writer
 {
   use HeaderFormattingTrait;

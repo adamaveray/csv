@@ -5,7 +5,10 @@ namespace Averay\Csv\Schema;
 
 use Averay\Csv\Schema\Types\TypeInterface;
 
-final readonly class Schema
+/**
+ * @api
+ */
+readonly class Schema
 {
   /**
    * @param array<string, TypeInterface> $columns
