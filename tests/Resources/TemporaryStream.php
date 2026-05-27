@@ -28,7 +28,7 @@ final readonly class TemporaryStream
   public function toArray(): array
   {
     \rewind($this->stream);
-    return Reader::createFromStream($this->stream)->toArray();
+    return Reader::from($this->stream)->toArray();
   }
 
   public function __destruct()

@@ -26,7 +26,7 @@ final class ListType extends AbstractType
   #[\Override]
   public function deserialize(string $value): array
   {
-    $csv = Reader::createFromString($value)->toArray();
+    $csv = Reader::fromString($value)->toArray();
     if (\count($csv) !== 1) {
       throw new \InvalidArgumentException('Invalid list.');
     }
@@ -45,7 +45,7 @@ final class ListType extends AbstractType
       throw new \UnexpectedValueException('Failed creating temporary stream.');
     }
     /** @psalm-suppress MixedArgumentTypeCoercion $value is list<TItem> which extends list<string>. */
-    Writer::createFromStream($stream)->insertOne($value);
+    Writer::from($stream)->insertOne($value);
     \rewind($stream);
     $result = \stream_get_contents($stream);
     if ($result === false) {
