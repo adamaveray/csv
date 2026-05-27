@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed9bb83c455babcad18c5a67fa3054a8",
+    "content-hash": "773a53c80e1e06f36f21bd4128fd6815",
     "packages": [
         {
             "name": "league/csv",
