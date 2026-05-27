@@ -8,10 +8,10 @@ namespace Averay\Csv\Schema\Types;
  */
 interface TypeInterface
 {
-  public bool $nullable { get; }
+  public bool $nullable { get; } // prettier-ignore -- Incorrectly strips the `{ get; }` component
 
   /** @var TType|null */
-  public mixed $default { get; }
+  public mixed $default { get; } // prettier-ignore -- Incorrectly strips the `{ get; }` component
 
   /**
    * @return TType
