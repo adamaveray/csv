@@ -8,8 +8,8 @@
     "test": "php ./vendor/bin/phpunit"
   },
   "devDependencies": {
-    "@prettier/plugin-php": "^0.22.4",
+    "@prettier/plugin-php": "^0.25.0",
     "husky": "^9.1.7",
-    "prettier": "^3.5.3"
+    "prettier": "^3.8.3"
   }
 }
