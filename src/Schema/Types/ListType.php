@@ -44,7 +44,6 @@ final class ListType extends AbstractType
     if ($stream === false) {
       throw new \UnexpectedValueException('Failed creating temporary stream.');
     }
-    /** @psalm-suppress MixedArgumentTypeCoercion $value is list<TItem> which extends list<string>. */
     Writer::from($stream)->insertOne($value);
     \rewind($stream);
     $result = \stream_get_contents($stream);
