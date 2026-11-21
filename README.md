@@ -1,3 +1,7 @@
+**This repository has been migrated to Codeberg: [codeberg.org/adamaveray/csv](https://codeberg.org/adamaveray/csv)**
+
+---
+
 # CSV
 
 Extensions to [the League CSV library](https://csv.thephpleague.com) to support declaring CSV schemas used for reading & writing.
